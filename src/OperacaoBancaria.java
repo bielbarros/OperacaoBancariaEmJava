@@ -38,8 +38,7 @@ public class OperacaoBancaria {
     private static void verificarNumeroConta(String numeroConta, double saldo, boolean continuar, int protocolNumber, Scanner scanner) {
         if (numeroConta.length() != 8) {
             throw new IllegalArgumentException("Número de conta inválido. Digite exatamente 8 dígitos.");
-            // Lançar uma IllegalArgumentException com a seguinte mensagem:
-            // "Número de conta inválido. Digite exatamente 8 dígitos."
+
         }
 
         while (continuar) {
