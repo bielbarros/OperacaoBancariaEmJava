@@ -17,6 +17,30 @@ public class OperacaoBancaria {
         int protocolNumber = random.nextInt(max - min + 1) + min;
 
         System.out.println("Bem-vindo ao Banco Java!");
+        System.out.println("Insira o número da sua conta:");
+
+        try {
+            String numeroConta = scanner.nextLine();
+            verificarNumeroConta(numeroConta, saldo, continuar, protocolNumber, scanner);
+            System.out.println("Número de conta válido.");
+            // Chamar o método que verifica se o número da conta é válido
+
+            // Caso nenhuma exceção seja lançada, imprime a mensagem de sucesso.
+        } catch (IllegalArgumentException e) {
+            // Informar que o número de conta é inválido e exibir a mensagem de erro
+            System.out.println("Erro: " + e.getMessage());
+        } finally {
+            // Fechar o scanner para evitar vazamentos de recursos
+            scanner.close();
+        }
+    }
+
+    private static void verificarNumeroConta(String numeroConta, double saldo, boolean continuar, int protocolNumber, Scanner scanner) {
+        if (numeroConta.length() != 8) {
+            throw new IllegalArgumentException("Número de conta inválido. Digite exatamente 8 dígitos.");
+            // Lançar uma IllegalArgumentException com a seguinte mensagem:
+            // "Número de conta inválido. Digite exatamente 8 dígitos."
+        }
 
         while (continuar) {
             System.out.println("\nEscolha uma opção:");
@@ -56,14 +80,5 @@ public class OperacaoBancaria {
                     System.out.println("Opção inválida. Tente novamente.");
             }
         }
-
-        scanner.close();
     }
-
-
-
-
-
-
-
 }
